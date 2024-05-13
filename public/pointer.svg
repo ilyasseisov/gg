@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64">
+  <g class="iconmonstr-triangle-3 1" clip-path="url(#a)">
+    <path fill="#fff" d="M.86 12.89c-2.436-4.061.489-9.258 5.246-9.258h51.77c4.758 0 7.684 5.197 5.246 9.258l-25.89 43.147c-2.376 3.955-8.11 3.947-10.48 0L.86 12.89Z" class="Vector"/>
+  </g>
+  <defs>
+    <clipPath id="a" class="a">
+      <path fill="#fff" d="M0 0h64v64H0z"/>
+    </clipPath>
+  </defs>
+</svg>

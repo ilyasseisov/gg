@@ -1,0 +1,341 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #181818;
+}
+
+#newGame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: hsl(42, 81%, 66%);
+  border: 6px solid hsl(42, 81%, 46%);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+  user-select: none;
+  box-shadow: 0 8px 32px #582982;
+  width: 80px;
+  height: 80px;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px hsl(42, 81%, 46%);
+  font-size: 14px;
+}
+@media (min-width: 576px) {
+  #newGame {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+  }
+}
+#newGame:hover {
+  background-color: hsl(42, 81%, 56%);
+}
+#newGame:disabled {
+  display: none;
+  user-select: none;
+  cursor: not-allowed;
+}
+
+.wheel-container {
+  width: 300px;
+  height: 300px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media (min-width: 576px) {
+  .wheel-container {
+    width: 520px;
+    height: 520px;
+    padding: 2px;
+  }
+}
+@media (min-width: 768px) {
+  .wheel-container {
+    width: 720px;
+    height: 720px;
+    padding: 2px;
+  }
+}
+.wheel-container .spin-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: #9e4ec0;
+  border: 6px solid #432a74;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+  user-select: none;
+  box-shadow: 0 8px 32px #582982;
+  width: 80px;
+  height: 80px;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  font-size: 14px;
+}
+@media (min-width: 576px) {
+  .wheel-container .spin-btn {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+  }
+}
+.wheel-container .spin-btn:hover {
+  background-color: #8139a0;
+}
+.wheel-container .spin-btn:disabled {
+  display: none;
+  user-select: none;
+  cursor: not-allowed;
+}
+.wheel-container .arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #582982;
+  border: 4px solid #432a74;
+  box-shadow: 0 4px 16px #432a74;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (min-width: 576px) {
+  .wheel-container .arrow {
+    top: -24px;
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (min-width: 768px) {
+  .wheel-container .arrow {
+    top: -40px;
+    width: 80px;
+    height: 80px;
+  }
+}
+.wheel-container .arrow img {
+  width: 20px;
+  height: 20px;
+}
+@media (min-width: 576px) {
+  .wheel-container .arrow img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .wheel-container .arrow img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.wheel {
+  width: 298px;
+  height: 298px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid #432a74;
+  box-shadow: 0 16px 128px rgba(128, 0, 128, 0.3);
+}
+@media (min-width: 576px) {
+  .wheel {
+    width: 518px;
+    height: 518px;
+  }
+}
+@media (min-width: 768px) {
+  .wheel {
+    width: 718px;
+    height: 718px;
+  }
+}
+.wheel .slices {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(27deg);
+}
+.wheel .slices .slice {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  transform-origin: bottom right;
+  clip-path: polygon(0 0, 27.4% 0, 100% 100%, 0 27.4%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wheel .slices .slice:nth-child(odd) {
+  background-color: #8139a0; /* Red for odd slices */
+}
+.wheel .slices .slice:nth-child(even) {
+  background-color: #582982; /* Green for even slices */
+}
+.wheel .slices .slice:nth-of-type(1) {
+  transform: rotate(18deg);
+}
+.wheel .slices .slice:nth-of-type(2) {
+  transform: rotate(36deg);
+}
+.wheel .slices .slice:nth-of-type(3) {
+  transform: rotate(54deg);
+}
+.wheel .slices .slice:nth-of-type(4) {
+  transform: rotate(72deg);
+}
+.wheel .slices .slice:nth-of-type(5) {
+  transform: rotate(90deg);
+}
+.wheel .slices .slice:nth-of-type(6) {
+  transform: rotate(108deg);
+}
+.wheel .slices .slice:nth-of-type(7) {
+  transform: rotate(126deg);
+}
+.wheel .slices .slice:nth-of-type(8) {
+  transform: rotate(144deg);
+}
+.wheel .slices .slice:nth-of-type(9) {
+  transform: rotate(162deg);
+}
+.wheel .slices .slice:nth-of-type(10) {
+  transform: rotate(180deg);
+}
+.wheel .slices .slice:nth-of-type(11) {
+  transform: rotate(198deg);
+}
+.wheel .slices .slice:nth-of-type(12) {
+  transform: rotate(216deg);
+}
+.wheel .slices .slice:nth-of-type(13) {
+  transform: rotate(234deg);
+}
+.wheel .slices .slice:nth-of-type(14) {
+  transform: rotate(252deg);
+}
+.wheel .slices .slice:nth-of-type(15) {
+  transform: rotate(270deg);
+}
+.wheel .slices .slice:nth-of-type(16) {
+  transform: rotate(288deg);
+}
+.wheel .slices .slice:nth-of-type(17) {
+  transform: rotate(306deg);
+}
+.wheel .slices .slice:nth-of-type(18) {
+  transform: rotate(324deg);
+}
+.wheel .slices .slice:nth-of-type(19) {
+  transform: rotate(342deg);
+}
+.wheel .slices .slice:nth-of-type(20) {
+  transform: rotate(360deg);
+}
+.wheel .slices .slice span {
+  transform: rotate(45deg);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+  left: -6px;
+  top: -6px;
+  letter-spacing: 4px;
+}
+@media (min-width: 576px) {
+  .wheel .slices .slice span {
+    left: -12px;
+    top: -12px;
+    font-size: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .wheel .slices .slice span {
+    left: -20px;
+    top: -20px;
+    font-size: 24px;
+  }
+}
+.wheel .slices .slice.active span {
+  font-size: 18px;
+  transition: all 0.3s linear;
+  transform: rotate(45deg) scale(1.4);
+}
+@media (min-width: 576px) {
+  .wheel .slices .slice.active span {
+    transform: rotate(45deg) scale(1.6);
+  }
+}
+@media (min-width: 768px) {
+  .wheel .slices .slice.active span {
+    transform: rotate(45deg) scale(2);
+  }
+}
+
+/* to put confetti on top of all */
+canvas {
+  z-index: 10 !important;
+}
+
+.opacity-01 {
+  opacity: 0.1;
+}
+
+.opacity-05 {
+  opacity: 0.5;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.winningNumber {
+  color: white;
+  background: hsl(42, 81%, 56%);
+  border-radius: 12px;
+  border: 4px solid hsl(42, 81%, 46%);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-shadow: 1px 1px 1px hsl(42, 81%, 46%);
+  padding: 20px;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .winningNumber {
+    padding: 24px;
+    font-size: 20px;
+  }
+}
